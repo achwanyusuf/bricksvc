@@ -4,7 +4,7 @@
   <br>
 </h1>
 
-<h4 align="center">Brick svc served payment tranfer</h4>
+<h4 align="center">Brick svc serve payment transfer</h4>
 
 ## Programs
 # Presentation
