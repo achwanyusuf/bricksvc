@@ -1,0 +1,1292 @@
+definitions:
+  clientresponse.BankAccount:
+    properties:
+      account_amount:
+        type: number
+      account_name:
+        type: string
+      account_number:
+        type: string
+      bank_id:
+        type: integer
+      id:
+        type: string
+    type: object
+  model.Account:
+    properties:
+      api_key:
+        type: string
+      created_at:
+        type: string
+      created_by:
+        type: integer
+      deleted_at:
+        type: string
+      deleted_by:
+        type: integer
+      email:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+      updated_by:
+        type: integer
+    type: object
+  model.AccountRole:
+    properties:
+      account_id:
+        type: integer
+      created_at:
+        type: string
+      created_by:
+        type: integer
+      deleted_at:
+        type: string
+      deleted_by:
+        type: integer
+      id:
+        type: integer
+      role_id:
+        type: integer
+      updated_at:
+        type: string
+      updated_by:
+        type: integer
+    type: object
+  model.CreateAccountRole:
+    properties:
+      account_id:
+        type: integer
+      role_id:
+        type: integer
+    type: object
+  model.CreateRole:
+    properties:
+      client_id:
+        type: string
+      client_secret:
+        type: string
+      scope:
+        type: string
+    type: object
+  model.CreateTransfer:
+    properties:
+      amount:
+        type: number
+      destination_bank_account:
+        type: string
+      destination_bank_id:
+        type: integer
+      source_bank_account:
+        type: string
+      source_bank_id:
+        type: integer
+      transaction_time:
+        type: string
+    type: object
+  model.Pagination:
+    properties:
+      current_elements:
+        type: integer
+      current_page:
+        type: integer
+      sort_by:
+        type: string
+      total_elements:
+        type: integer
+      total_pages:
+        type: integer
+    type: object
+  model.Register:
+    properties:
+      confirm_password:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+    type: object
+  model.Role:
+    properties:
+      client_id:
+        type: string
+      created_at:
+        type: string
+      created_by:
+        type: integer
+      deleted_at:
+        type: string
+      deleted_by:
+        type: integer
+      id:
+        type: integer
+      scope:
+        type: string
+      updated_at:
+        type: string
+      updated_by:
+        type: integer
+    type: object
+  model.TransferJob:
+    properties:
+      api_key:
+        type: string
+      created_at:
+        type: string
+      created_by:
+        type: integer
+      deleted_at:
+        type: string
+      deleted_by:
+        type: integer
+      id:
+        type: integer
+      job_id:
+        type: string
+      payload:
+        type: string
+      status:
+        type: string
+      updated_at:
+        type: string
+      updated_by:
+        type: integer
+    type: object
+  model.UpdateAccountData:
+    properties:
+      name:
+        type: string
+    type: object
+  model.UpdatePasswordData:
+    properties:
+      confirm_password:
+        type: string
+      password:
+        type: string
+    type: object
+  model.UpdateRole:
+    type: object
+  response.AccountRolesResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/model.AccountRole'
+        type: array
+      message:
+        type: string
+      pagination:
+        $ref: '#/definitions/model.Pagination'
+      status_code:
+        type: integer
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.AccountsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/model.Account'
+        type: array
+      message:
+        type: string
+      pagination:
+        $ref: '#/definitions/model.Pagination'
+      status_code:
+        type: integer
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.EmptyResponse:
+    properties:
+      message:
+        type: string
+      status_code:
+        type: integer
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.GetBankAccountResponse:
+    properties:
+      data:
+        $ref: '#/definitions/clientresponse.BankAccount'
+      message:
+        type: string
+      pagination:
+        $ref: '#/definitions/model.Pagination'
+      status_code:
+        type: integer
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.LoginResponse:
+    properties:
+      access_token:
+        type: string
+      exp:
+        type: string
+      message:
+        type: string
+      scope:
+        type: string
+      status_code:
+        type: integer
+      token_type:
+        type: string
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.RegisterResponse:
+    properties:
+      data:
+        $ref: '#/definitions/model.Account'
+      message:
+        type: string
+      status_code:
+        type: integer
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.RolesResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/model.Role'
+        type: array
+      message:
+        type: string
+      pagination:
+        $ref: '#/definitions/model.Pagination'
+      status_code:
+        type: integer
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.SingleAccountResponse:
+    properties:
+      data:
+        $ref: '#/definitions/model.Account'
+      message:
+        type: string
+      status_code:
+        type: integer
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.SingleAccountRoleResponse:
+    properties:
+      data:
+        $ref: '#/definitions/model.AccountRole'
+      message:
+        type: string
+      status_code:
+        type: integer
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.SingleRoleResponse:
+    properties:
+      data:
+        $ref: '#/definitions/model.Role'
+      message:
+        type: string
+      status_code:
+        type: integer
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.SingleTransferJobResponse:
+    properties:
+      data:
+        $ref: '#/definitions/model.TransferJob'
+      message:
+        type: string
+      status_code:
+        type: integer
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.TransactionInfo:
+    properties:
+      cause:
+        type: string
+      error_code:
+        type: integer
+      request_id:
+        type: string
+      request_method:
+        type: string
+      request_uri:
+        type: string
+      timestamp:
+        type: string
+    type: object
+  response.TransferJobsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/model.TransferJob'
+        type: array
+      message:
+        type: string
+      pagination:
+        $ref: '#/definitions/model.Pagination'
+      status_code:
+        type: integer
+      transaction_info:
+        $ref: '#/definitions/response.TransactionInfo'
+      translation:
+        $ref: '#/definitions/response.Translation'
+    type: object
+  response.Translation:
+    properties:
+      en:
+        type: string
+    type: object
+info:
+  contact:
+    email: support@brick.com
+    name: Brick Support
+    url: https://www.brick.com/support
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+paths:
+  /account:
+    get:
+      consumes:
+      - application/json
+      description: Get accounts data
+      parameters:
+      - description: search by id
+        in: query
+        name: id
+        type: string
+      - description: search by name
+        in: query
+        name: name
+        type: string
+      - description: search by email
+        in: query
+        name: email
+        type: string
+      - description: sort result by attributes
+        in: query
+        name: sort_by
+        type: string
+      - description: ' '
+        in: query
+        name: page
+        type: integer
+      - description: ' '
+        in: query
+        name: limit
+        type: integer
+      - description: Request Cache Control
+        enum:
+        - must-revalidate
+        - none
+        in: header
+        name: Cache-Control
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.AccountsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.AccountsResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.AccountsResponse'
+      security:
+      - OAuth2Password: []
+      summary: Get accounts data
+      tags:
+      - account
+    post:
+      consumes:
+      - application/json
+      description: Create account data
+      parameters:
+      - description: Account Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.Register'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.RegisterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.RegisterResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.RegisterResponse'
+      security:
+      - OAuth2Password: []
+      summary: Create account
+      tags:
+      - account
+  /account-role:
+    get:
+      consumes:
+      - application/json
+      description: Get account roles data
+      parameters:
+      - description: search by id
+        in: query
+        name: id
+        type: string
+      - description: search by account id
+        in: query
+        name: account_id
+        type: integer
+      - description: search by role id
+        in: query
+        name: role_id
+        type: integer
+      - description: sort result by attributes
+        in: query
+        name: sort_by
+        type: string
+      - description: ' '
+        in: query
+        name: page
+        type: integer
+      - description: ' '
+        in: query
+        name: limit
+        type: integer
+      - description: Request Cache Control
+        enum:
+        - must-revalidate
+        - none
+        in: header
+        name: Cache-Control
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.AccountRolesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.AccountRolesResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.AccountRolesResponse'
+      security:
+      - OAuth2Password: []
+      summary: Get account roles data
+      tags:
+      - account-role
+    post:
+      consumes:
+      - application/json
+      description: Create account role data
+      parameters:
+      - description: AccountRole Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateAccountRole'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleAccountRoleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleAccountRoleResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleAccountRoleResponse'
+      security:
+      - OAuth2Password: []
+      summary: Create AccountRole
+      tags:
+      - account-role
+  /account-role/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete account role data
+      parameters:
+      - description: delete by id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.EmptyResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.EmptyResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.EmptyResponse'
+      security:
+      - OAuth2Password: []
+      summary: Delete account role data
+      tags:
+      - account-role
+    get:
+      consumes:
+      - application/json
+      description: Get account role by id data
+      parameters:
+      - description: get by id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Request Cache Control
+        enum:
+        - must-revalidate
+        - none
+        in: header
+        name: Cache-Control
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleAccountRoleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleAccountRoleResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleAccountRoleResponse'
+      security:
+      - OAuth2Password: []
+      summary: Get account role by id data
+      tags:
+      - account-role
+  /account/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete account data
+      parameters:
+      - description: delete by id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.EmptyResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.EmptyResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.EmptyResponse'
+      security:
+      - OAuth2Password: []
+      summary: Delete account data
+      tags:
+      - account
+    get:
+      consumes:
+      - application/json
+      description: Get accounts data
+      parameters:
+      - description: get by id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Request Cache Control
+        enum:
+        - must-revalidate
+        - none
+        in: header
+        name: Cache-Control
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+      security:
+      - OAuth2Password: []
+      summary: Get accounts data
+      tags:
+      - account
+    put:
+      consumes:
+      - application/json
+      description: Update account data
+      parameters:
+      - description: update by id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Account Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateAccountData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+      security:
+      - OAuth2Password: []
+      summary: Update account data
+      tags:
+      - account
+  /bank:
+    get:
+      consumes:
+      - application/json
+      description: Get banks data
+      parameters:
+      - description: search by bank id
+        in: query
+        name: bank_id
+        required: true
+        type: string
+      - description: search by account name
+        in: query
+        name: account_name
+        required: true
+        type: string
+      - description: search by account number
+        in: query
+        name: account_number
+        required: true
+        type: string
+      - description: Request Cache Control
+        enum:
+        - must-revalidate
+        - none
+        in: header
+        name: Cache-Control
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.GetBankAccountResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.GetBankAccountResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.GetBankAccountResponse'
+      security:
+      - APIKey: []
+      summary: Get Bank data
+      tags:
+      - bank
+  /me:
+    get:
+      consumes:
+      - application/json
+      description: Get current account data
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+      security:
+      - OAuth2Password: []
+      summary: Get current account data
+      tags:
+      - account
+    put:
+      consumes:
+      - application/json
+      description: Update current account data
+      parameters:
+      - description: Update Account Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateAccountData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+      security:
+      - OAuth2Password: []
+      summary: Update current account data
+      tags:
+      - account
+  /me/password:
+    put:
+      consumes:
+      - application/json
+      description: Update password account data
+      parameters:
+      - description: Update Account Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdatePasswordData'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleAccountResponse'
+      security:
+      - OAuth2Password: []
+      summary: Update password account data
+      tags:
+      - account
+  /oauth2:
+    post:
+      consumes:
+      - application/x-www-form-urlencoded
+      description: OAUTH2 Authorization Code flow will show generated token to access
+        apps
+      parameters:
+      - description: Client ID
+        in: header
+        name: client_id
+        required: true
+        type: string
+      - description: Client Secret
+        in: header
+        name: client_secret
+        required: true
+        type: string
+      - description: Account Email
+        in: formData
+        name: username
+        required: true
+        type: string
+      - description: Account Password
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.LoginResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.LoginResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.LoginResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.LoginResponse'
+      summary: OAUTH2 Authorization
+      tags:
+      - account
+  /register:
+    post:
+      consumes:
+      - application/json
+      description: Register to create access from guest
+      parameters:
+      - description: Account Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.Register'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.RegisterResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.RegisterResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.RegisterResponse'
+      summary: Register account
+      tags:
+      - account
+  /role:
+    get:
+      consumes:
+      - application/json
+      description: Get roles data
+      parameters:
+      - description: search by id
+        in: query
+        name: id
+        type: string
+      - description: search by scope
+        in: query
+        name: scope
+        type: string
+      - description: search by client_id
+        in: query
+        name: cid
+        type: string
+      - description: sort result by attributes
+        in: query
+        name: sort_by
+        type: string
+      - description: ' '
+        in: query
+        name: page
+        type: integer
+      - description: ' '
+        in: query
+        name: limit
+        type: integer
+      - description: Request Cache Control
+        enum:
+        - must-revalidate
+        - none
+        in: header
+        name: Cache-Control
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.RolesResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.RolesResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.RolesResponse'
+      security:
+      - OAuth2Password: []
+      summary: Get roles data
+      tags:
+      - role
+    post:
+      consumes:
+      - application/json
+      description: Create role data
+      parameters:
+      - description: Role Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateRole'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleRoleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleRoleResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleRoleResponse'
+      security:
+      - OAuth2Password: []
+      summary: Create Role
+      tags:
+      - role
+  /role/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete role data
+      parameters:
+      - description: delete by id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.EmptyResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.EmptyResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.EmptyResponse'
+      security:
+      - OAuth2Password: []
+      summary: Delete role data
+      tags:
+      - role
+    get:
+      consumes:
+      - application/json
+      description: Get roles data
+      parameters:
+      - description: get by id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Request Cache Control
+        enum:
+        - must-revalidate
+        - none
+        in: header
+        name: Cache-Control
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleRoleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleRoleResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleRoleResponse'
+      security:
+      - OAuth2Password: []
+      summary: Get roles data
+      tags:
+      - role
+    put:
+      consumes:
+      - application/json
+      description: Update role data
+      parameters:
+      - description: update by id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Role Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.UpdateRole'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleRoleResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleRoleResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleRoleResponse'
+      security:
+      - OAuth2Password: []
+      summary: Update role data
+      tags:
+      - role
+  /transfer:
+    get:
+      consumes:
+      - application/json
+      description: get transfer bank
+      parameters:
+      - description: search by id
+        in: query
+        name: id
+        type: integer
+      - description: search by job id
+        in: query
+        name: job_id
+        type: string
+      - description: search by api key
+        in: query
+        name: api_key
+        type: string
+      - description: search by status
+        in: query
+        name: status
+        type: string
+      - description: sort result by attributes
+        in: query
+        name: sort_by
+        type: string
+      - description: ' '
+        in: query
+        name: page
+        type: integer
+      - description: ' '
+        in: query
+        name: limit
+        type: integer
+      - description: Request Cache Control
+        enum:
+        - must-revalidate
+        - none
+        in: header
+        name: Cache-Control
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.TransferJobsResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.TransferJobsResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.TransferJobsResponse'
+      security:
+      - OAuth2Password: []
+      summary: get Transfer data
+      tags:
+      - transfer
+    post:
+      consumes:
+      - application/json
+      description: create transfer bank
+      parameters:
+      - description: Create Transfer Data
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateTransfer'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleTransferJobResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleTransferJobResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/response.SingleTransferJobResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleTransferJobResponse'
+      security:
+      - APIKey: []
+      summary: Create Transfer data
+      tags:
+      - transfer
+  /transfer/{job_id}:
+    get:
+      consumes:
+      - application/json
+      description: get transfer data by job id
+      parameters:
+      - description: get by job id
+        in: path
+        name: job_id
+        required: true
+        type: string
+      - description: Request Cache Control
+        enum:
+        - must-revalidate
+        - none
+        in: header
+        name: Cache-Control
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/response.SingleTransferJobResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/response.SingleTransferJobResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/response.SingleTransferJobResponse'
+      security:
+      - OAuth2Password: []
+      summary: Get Transfer Data By Job ID
+      tags:
+      - transfer
+securityDefinitions:
+  APIKey:
+    description: Type "APIKey" followed by api key
+    in: header
+    name: API-Key
+    type: apiKey
+  OAuth2Password:
+    flow: password
+    tokenUrl: '%s'
+    type: oauth2
+swagger: "2.0"

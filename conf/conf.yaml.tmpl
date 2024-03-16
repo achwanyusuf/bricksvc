@@ -1,0 +1,104 @@
+app:
+    env: "local"
+    kafka: 
+        enabled: true
+        bootstrap_servers: "kafka:19092" 
+        group_id: "brick_local"
+        auto_offset_reset: "earliest"
+        security_protocol: "PLAINTEXT"
+        broker_address_family: "v4"
+        broker_address_ttl: 10s
+        fetch_max_bytes: 1049600
+        check_crcs: true
+        session_timeout: 60s
+        heartbeat_interval: 5s
+        go_application_rebalance_enable: true
+        enable_auto_commit: false
+        fetch_error_backoff: 100ms
+        auto_commit_interval: 5s
+        enable_partition_eof: false
+        enable_auto_offset_store: false
+        max_poll_interval: 600s
+        message_max_bytes: 1049600
+        message_copy_max_bytes: 1049600
+        receive_message_max_bytes: 2097152
+        max_in_flight_requests_per_connection: 10000
+        topic_metadata_refresh_interval: 30s
+        metadata_max_age: 5s
+        topic_metadata_refresh_fast_interval: 250ms
+        topic_metadata_refresh_sparse: true
+        socket_timeout: 30s
+        socket_keepalive_enable: true
+        partition_assignment_strategy: roundrobin
+        coordinator_query_interval: 1s
+        sasl_options: 
+            enabled: false
+    http_server:
+        host: "localhost"
+        port: 8081
+        read_timeout: 60s
+        write_timeout: 60s
+        print_routes: false
+        case_sensitive: true
+        concurency: 262144
+        read_buffer_size: 4096
+        write_buffer_size: 4096
+    psql:
+        name: "brickdb"
+        host: "postgresql"
+        port: 5432
+        user_name: "dev"
+        password: "12345678"
+        ssl_mode: "disable"
+        max_open_connection: 5
+        max_idle_connection: 5
+        max_lifetime: 5
+        debug_mode: true
+        migration_path: "file://script/migrations"
+    redis:
+        url: "redis:6379"
+        password: ""
+        user_name: ""
+        pool_size: 10
+        max_retries: 3
+    oauth2_password_token_url: "http://localhost:8081/api/v1/oauth2"
+consumer:
+    payment:
+        transfer_topic: "bricksvc.transfer.create"
+rest:
+    account:
+        token_secret: "aS53hs8kahs912"
+    token_secret: "aS53hs8kahs912"
+scheduler:
+    transfer:
+        get_transfer_callback: 
+            name: "get transfer callback"
+            interval: 10s
+            limit: 10
+usecase:
+    account:
+        token_secret: "aS53hs8kahs912"
+        aes_secret: "62157hasjhjas"
+        token_timeout: 5h
+    transfer:
+        job_active_duration: 10m
+repository:
+    account:
+        page_limit: 10
+        expiration_time: 30s
+    account_role:
+        page_limit: 10
+        expiration_time: 30s
+    role:
+        page_limit: 10
+        expiration_time: 30s
+    bank:
+        page_limit: 10
+        expiration_time: 30s
+        get_bank_account_url: "https://65f37745105614e654a08ead.mockapi.io/api/v1/bank-account"
+    transfer:
+        transfer_topic: bricksvc.transfer.create
+        page_limit: 10
+        expiration_time: 30s
+        create_transaction_url: "https://65f37745105614e654a08ead.mockapi.io/api/v1/transaction"
+        get_transaction_url: "https://65f37745105614e654a08ead.mockapi.io/api/v1/transaction/"
